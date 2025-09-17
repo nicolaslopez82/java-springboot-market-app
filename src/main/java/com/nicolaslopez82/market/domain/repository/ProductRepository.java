@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
  * This ProductRepository interface talk in terms of Domains.
  */
 public interface ProductRepository {

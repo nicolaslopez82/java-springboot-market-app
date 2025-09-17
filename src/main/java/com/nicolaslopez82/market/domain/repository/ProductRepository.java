@@ -9,10 +9,10 @@ import java.util.Optional;
  * This ProductRepository interface talk in terms of Domains.
  */
 public interface ProductRepository {
-    List<Product> getAllProducts();
+    List<Product> getAll();
     Optional<List<Product>> getProductsByCategoryId(int categoryId);
     Optional<List<Product>> getScarceProducts(int quantity);
     Optional<Product> getProductById(int productId);
     Product save(Product product);
-    void delete(Product product);
+    void delete(int product);
 }

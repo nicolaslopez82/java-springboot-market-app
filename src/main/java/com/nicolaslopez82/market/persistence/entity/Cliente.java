@@ -13,8 +13,8 @@ public class Cliente {
     @Column(name = "id")
     private String idCliente;
 
-    @OneToMany(mappedBy = "compra")
-    private List<Compra> compra;
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 
     private String nombre;
 
@@ -25,6 +25,7 @@ public class Cliente {
 
     private String direccion;
 
+    @Column(name="correo_electronico")
     private String email;
 
     public String getIdCliente() {
@@ -73,5 +74,13 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
 }

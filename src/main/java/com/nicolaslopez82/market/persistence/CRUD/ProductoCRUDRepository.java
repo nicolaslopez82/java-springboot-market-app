@@ -20,7 +20,7 @@ public interface ProductoCRUDRepository extends CrudRepository<Producto, Integer
     List<Producto> findByIdCategoriaOrderByNombreAsc(Integer idCategoria);
 
     @Query(value = "SELECT * FROM productos WHERE cantidad_stock < ? AND estado = ? order by id_categoria", nativeQuery = true)
-    Optional<List<Producto>> getProductosLessThanAndEstadoOrderByCategoria(Integer cantidad, Boolean idEstado);
+    Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidad, boolean idEstado);
 
     Producto findByIdProducto(int idProducto);
 }

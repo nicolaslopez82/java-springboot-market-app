@@ -15,28 +15,28 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/products")
+    @GetMapping("/all")
     public List<Product> getProduct(){
        return productService.findAll();
     }
 
-    @GetMapping("/products/{id}")
-    public Optional<Product> getProduct(@PathVariable int productId){
+    @GetMapping("/{id}")
+    public Optional<Product> getProduct(@PathVariable("id") int productId){
         return productService.getProduct(productId);
     }
 
-    @GetMapping("/products/{categoryId}")
-    public Optional<List<Product>> getProductsByCategoryId(int categoryId){
+    @GetMapping("/category/{categoryId}")
+    public Optional<List<Product>> getProductsByCategoryId(@PathVariable("categoryId") int categoryId){
         return productService.getProductsByCategoryId(categoryId);
     }
 
-    @PostMapping("/products/product")
+    @PostMapping("/save")
     public Product save(@RequestBody Product product){
         return productService.save(product);
     }
 
-    @DeleteMapping("/products/product/delete/{id}")
-    public void deleteProduct(@PathVariable int productId){
+    @DeleteMapping("/delete/{id}")
+    public void deleteProduct(@PathVariable("id") int productId){
         productService.delete(productId);
     }
 }

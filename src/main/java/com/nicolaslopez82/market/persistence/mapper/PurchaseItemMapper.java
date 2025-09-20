@@ -1,9 +1,7 @@
 package com.nicolaslopez82.market.persistence.mapper;
 
 import com.nicolaslopez82.market.domain.PurchaseItem;
-import com.nicolaslopez82.market.persistence.entity.Compra;
 import com.nicolaslopez82.market.persistence.entity.ComprasProducto;
-import com.nicolaslopez82.market.persistence.entity.ComprasProductoPK;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

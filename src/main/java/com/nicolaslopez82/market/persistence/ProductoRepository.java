@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This repository talks in terms of Domain (Product).
+ */
 @Repository
 public class ProductoRepository implements ProductRepository {
 

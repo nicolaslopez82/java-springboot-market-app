@@ -30,7 +30,7 @@ public class Compra {
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL}) // This means that all process that a Compra make in the DB, are going to include all products that are into the Compras, in Cascade.
     private List<ComprasProducto> productos;
 
     public Integer getIdCompra() {

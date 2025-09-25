@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@Tag(name = "Products", description = "Products API")
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
     @GetMapping("/all")
-    @Operation(summary = "Get all supermarket products.", description = "Get all supermarket products.")
+    @Operation(summary = "Get all supermarket Products.", description = "Get all supermarket Products.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK", content = { @Content(mediaType = "application/json",
                     schema = @Schema(implementation = Product.class)) }),
@@ -49,7 +51,7 @@ public class ProductController {
     }
 
     @GetMapping("/category/{categoryId}")
-    @Operation(summary = "Get a List of Product by ID's Category.", description = "Get a list of Product by ID's Category.")
+    @Operation(summary = "Get a List of Product by Category ID.", description = "Get a List of Product by Category ID.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK", content = { @Content(mediaType = "application/json",
                     schema = @Schema(implementation = Product.class)) }),
@@ -75,11 +77,13 @@ public class ProductController {
                     description = "Product to create", required = true,
                     content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = Product.class),
-                    examples = @ExampleObject(value = "{ \"productName\": \"Cafe\", " +
-                                                        "\"categoryId\": \"8\", " +
-                                                        "\"price\": \"12000.0\", " +
-                                                        "\"stock\": \"1500\", " +
-                                                        "\"active\": \"true\" }")))
+                    examples = @ExampleObject(
+                            name = "Product Example",
+                            value = "{ \"productName\": \"Cafe\", " +
+                                      "\"categoryId\": \"8\", " +
+                                      "\"price\": \"12000.0\", " +
+                                      "\"stock\": \"1500\", " +
+                                      "\"active\": \"true\" }")))
             @RequestBody Product product){
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }

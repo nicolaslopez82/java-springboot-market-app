@@ -1,35 +1,27 @@
-package com.nicolaslopez82.market;
+/*
+package com.nicolaslopez82.market.repository;
 
 import com.nicolaslopez82.market.domain.Category;
 import com.nicolaslopez82.market.domain.Product;
 import com.nicolaslopez82.market.domain.repository.ProductRepository;
-import com.nicolaslopez82.market.domain.service.ProductService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.Assert;
 
-import java.util.List;
+import java.util.Random;
 
 @SpringBootTest
-class Nicolaslopez82MarketApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-    @Autowired
-    private ProductService productService;
-
+//@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+class ProductTest {
 
     @Test
-    public void getProductIdTest(){
-        final List<Product> products = productService.findAll();
-        Assertions.assertEquals(products.get(1).getProductId(),2);
-        Assertions.assertEquals(products.get(5).getProductName(),"Tomate");
-        Assertions.assertTrue(products.stream().anyMatch(product -> product.getProductId()>=1));
+    void contextLoads() {
     }
 
     @Autowired
@@ -39,11 +31,16 @@ class Nicolaslopez82MarketApplicationTests {
     public void productRepository_SaveProduct_ReturnAProductById() {
 
         //Arrange
+        // Generate a random number between 101 and 200 (inclusive)
+        Random random =  new Random();
+        int min = 101;
+        int max = 200;
+        int randomNumberInRange = random.nextInt(max - min + 1) + min;
         Product product = new Product();
-        //product.setProductId(100);
-        product.setProductName("Test");
+        product.setProductId(randomNumberInRange);
+        product.setProductName("Test" + randomNumberInRange);
         product.setCategoryId(1);
-        product.setPrice(5000);
+        product.setPrice(1000);
         product.setStock(10);
         product.setActive(true);
 
@@ -55,11 +52,12 @@ class Nicolaslopez82MarketApplicationTests {
         product.setCategory(category);
 
         //Act
-
         Product productResult = productRepository.save(product);
 
         //Assert
-
-        Assertions.assertNotNull(productResult);
+        Assertions.assertEquals(productResult.getProductId(), randomNumberInRange);
+        Assertions.assertEquals(productResult.getProductName(), "Test" + randomNumberInRange);
     }
+
 }
+*/

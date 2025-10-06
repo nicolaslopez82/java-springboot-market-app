@@ -1,8 +1,9 @@
 
-package com.nicolaslopez82.market.domain.service;
+package com.nicolaslopez82.market.service;
 
 import com.nicolaslopez82.market.domain.Product;
 import com.nicolaslopez82.market.domain.repository.ProductRepository;
+import com.nicolaslopez82.market.domain.service.ProductService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

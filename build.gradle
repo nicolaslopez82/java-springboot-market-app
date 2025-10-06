@@ -32,6 +32,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.6.1'
     testImplementation 'org.mockito:mockito-junit-jupiter:4.6.1'
     testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/com.opentable.components/otj-pg-embedded
+    testImplementation("com.opentable.components:otj-pg-embedded:1.0.3")
 }
 
 tasks.named('test') {

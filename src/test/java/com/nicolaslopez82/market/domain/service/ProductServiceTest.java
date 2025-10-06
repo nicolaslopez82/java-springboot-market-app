@@ -46,11 +46,21 @@ class ProductServiceTest {
     @Test
     void getProduct() {
         Integer id = 1;
-        Mockito.when(productRepository.getProductById(id)).thenReturn(Optional.of(new Product()));
+
+        Product productMocked = new Product();
+        productMocked.setProductId(id);
+        productMocked.setProductName("productNameTest");
+        productMocked.setCategoryId(1);
+        productMocked.setPrice(10);
+        productMocked.setStock(100);
+        productMocked.setActive(true);
+
+        Mockito.when(productRepository.getProductById(id)).thenReturn(Optional.of(productMocked));
         Optional<Product> product = productService.getProduct(id);
+
         Assertions.assertTrue(product.isPresent());
         Assertions.assertNotNull(product.get());
-        Assertions.assertEquals(id, product.get().getProductId());
+        Assertions.assertEquals(productMocked.getProductId(), product.get().getProductId());
         Mockito.verify(productRepository, Mockito.times(1)).getProductById(id);
     }
 
